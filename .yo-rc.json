@@ -1,0 +1,14 @@
+{
+  "generator-ui5-project": {
+    "namespaceUI5": "pruebas.btp",
+    "projectName": "JuegosFreeApp",
+    "uimoduleName": "myui5app",
+    "enableFPM": false,
+    "platform": "SAP Build Work Zone, standard edition",
+    "tileName": "myui5app",
+    "ui5Libs": "Local resources (SAPUI5)",
+    "newDir": true,
+    "initRepo": true,
+    "projectId": "pruebas.btp.JuegosFreeApp"
+  }
+}

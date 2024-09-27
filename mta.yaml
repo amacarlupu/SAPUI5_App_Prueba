@@ -1,0 +1,78 @@
+_schema-version: "3.2"
+ID: pruebas.btp.JuegosFreeApp
+version: 0.0.1
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm install
+        - npm run build:workspaces
+modules:
+  - name: pruebas.btp.JuegosFreeApp-destination-content
+    type: com.sap.application.content
+    requires:
+      - name: pruebas.btp.JuegosFreeApp-auth
+      - name: pruebas.btp.JuegosFreeApp-html-repo-host
+      - name: pruebas.btp.JuegosFreeApp-destination-service
+        parameters:
+          content-target: true
+    parameters:
+      content:
+        instance:
+          existing_destinations_policy: update
+          destinations:
+            - Name: pruebas.btp.JuegosFreeApp-html-repo-host
+              ServiceInstanceName: pruebas.btp.JuegosFreeApp-html-repo-host
+              ServiceKeyName: pruebas.btp.JuegosFreeApp-html-repo-host-key
+              sap.cloud.service: basic.service
+            - Name: pruebas.btp.JuegosFreeApp-auth
+              ServiceInstanceName: pruebas.btp.JuegosFreeApp-auth
+              ServiceKeyName: pruebas.btp.JuegosFreeApp-auth-key
+              sap.cloud.service: basic.service
+              Authentication: OAuth2UserTokenExchange
+    build-parameters:
+      no-source: true
+  - name: pruebas.btp.JuegosFreeApp-ui-deployer
+    type: com.sap.application.content
+    path: .
+    requires:
+      - name: pruebas.btp.JuegosFreeApp-html-repo-host
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: resources
+      requires:
+        - artifacts:
+            - dist/myui5app-content.zip
+          name: myui5app
+          target-path: resources/
+  - name: myui5app
+    type: html5
+    path: myui5app
+    build-parameters:
+      supported-platforms: []
+resources:
+  - name: pruebas.btp.JuegosFreeApp-destination-service
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-name: pruebas.btp.JuegosFreeApp-destination-service
+      service-plan: lite
+      config:
+        HTML5Runtime_enabled: true
+        version: 0.0.1
+  - name: pruebas.btp.JuegosFreeApp-html-repo-host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host
+      service-keys:
+        - name: pruebas.btp.JuegosFreeApp-html-repo-host-key
+  - name: pruebas.btp.JuegosFreeApp-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      path: ./xs-security.json
+      service: xsuaa
+      service-plan: application
+      service-keys:
+        - name: pruebas.btp.JuegosFreeApp-auth-key
