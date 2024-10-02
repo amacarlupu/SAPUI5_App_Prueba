@@ -29,6 +29,11 @@ sap.ui.define([
 
                 // set the device model
                 this.setModel(models.createDeviceModel(), "device");
+
+                // Agregamos nuestro modelo para el formRegistro
+                this.setModel(models.gamesModel(), "gamesModel");
+
+                this.setModel(models.pictureModel(), "pictureModel");
             }
         });
     }

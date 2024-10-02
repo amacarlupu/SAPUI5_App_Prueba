@@ -1,1 +1,52 @@
-/* Enter your custom styles here */
+    /* Enter your custom styles here */
+
+    .content-header {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        /* height: auto !important; */
+        background-color: rgba(23, 29, 37, 1) !important;
+        /* padding: 2% 0; */
+    }
+
+    .header-text {
+        color: rgba(255, 255, 255, 1) !important;
+    }
+
+    .content-logo {
+        display: flex !important;
+        justify-content: center !important;
+        align-content: center !important;
+        align-items: center !important;
+        margin: 0 !important;
+        /* border: solid red; */
+
+    }
+
+    .test1 {
+        display: flex !important;
+        justify-content: center !important;
+        align-content: center !important;
+        align-items: center !important;
+    }
+
+
+    .menu-categories {}
+
+    /* .nav-front{
+        background-image: url(../assets/img/test.png) !important;
+        border: solid red !important; 
+        height: 100vh !important;
+    } */
+
+    .content-subheader {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        background-color: rgba(92, 126, 16, 1) !important;
+    }
+
+ .link-text{
+    text-decoration: none !important;
+    color: rgba(255, 255, 255, 1) !important;
+ }

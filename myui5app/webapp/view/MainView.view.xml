@@ -1,7 +1,135 @@
-<mvc:View controllerName="myui5app.controller.MainView"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <content />
+<mvc:View
+    controllerName="myui5app.controller.MainView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:tnt="sap.tnt"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <Page
+        id="page"
+        class=""
+    >
+        <customHeader>
+            <Toolbar class="content-header">
+                <ToolbarSpacer />
+                <!-- <Image
+                    class="sapUiLargeMarginTop sapUiLargeMarginBottom image-logo"
+                    src="assets/img/logo_steam.svg"
+                    description="Logo"
+                    press="press"
+                /> -->
+                <ImageContent
+                    src="assets/img/logo_steam.svg"
+                    class="image-logo"
+                />
+
+                <Title
+                    text="{i18n>tienda}"
+                    level="H1"
+                    class="header-text"
+                />
+                <Title
+                    text="{i18n>comunidad}"
+                    level="H1"
+                    class="header-text"
+                />
+                <Title
+                    text="{i18n>acerca}"
+                    level="H1"
+                    class="header-text"
+                />
+                <Title
+                    text="{i18n>soporte}"
+                    level="H1"
+                    class="header-text"
+                />
+                <ToolbarSpacer />
+            </Toolbar>
+        </customHeader>
+        <subHeader>
+            <OverflowToolbar class="content-subheader">
+                <Button
+                    text="{i18n>instalar}"
+                    press="onInstalar"
+                    class="btnInstalar"
+                    ariaHasPopup="Dialog"
+                />
+
+                <Link
+                    ariaHasPopup="Dialog"
+                    text="{i18n>login}"
+                    press="onLogin"
+                    class="link-text"
+                />
+
+                <Link
+                    ariaHasPopup="Dialog"
+                    text="{i18n>registrarse}"
+                    press="onRegistrar"
+                    class="link-text"
+                />
+            </OverflowToolbar>
+        </subHeader>
+
+        <content>
+            <tnt:ToolHeader
+                id="shellLikeToolHeaderOnlyMandatoryControls"
+                class="sapUiTinyMargin sapUiLargeMarginTop"
+            >
+                <Image
+                    src="test-resources/sap/tnt/images/SAP_Logo.png"
+                    decorative="false"
+                    press="onLogoPressed"
+                    tooltip="SAP Logo"
+                >
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" />
+                    </layoutData>
+                </Image>
+                <Title
+                    text="Prоduct Name"
+                    wrapping="false"
+                >
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="Disappear" />
+                    </layoutData>
+                </Title>
+                <ToolbarSpacer />
+                <Avatar
+                    src="test-resources/sap/tnt/images/Woman_avatar_01.png"
+                    displaySize="XS"
+                    press=".onAvatarPressed"
+                    tooltip="Profile"
+                >
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" />
+                    </layoutData>
+                </Avatar>
+            </tnt:ToolHeader>
+
+            <HBox class="nav-front">
+                <VBox class="sapUiSmallMargin">
+                    <Button
+                        id="button"
+                        text="Open Menu"
+                        press="onPress"
+                        ariaHasPopup="Menu"
+                    />
+                </VBox>
+            </HBox>
+
+            <HBox>
+                <List items="{
+                        path: 'pictureModel>/'
+                    }">
+                    <items>
+                        <ObjectListItem
+                            title="{pictureModel>author}"
+                        />
+                    </items>
+                </List>
+                <Text text="Holassss" />
+            </HBox>
+        </content>
     </Page>
 </mvc:View>

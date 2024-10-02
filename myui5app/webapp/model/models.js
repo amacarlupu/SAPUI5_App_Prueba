@@ -1,7 +1,7 @@
 sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "sap/ui/Device"
-], 
+],
     /**
      * provide app-view type models (as in the first "V" in MVVC)
      * 
@@ -18,6 +18,40 @@ sap.ui.define([
                 var oModel = new JSONModel(Device);
                 oModel.setDefaultBindingMode("OneWay");
                 return oModel;
-        }
-    };
-});
+            },
+
+            gamesModel: function () {
+                const oParam = {
+                    id: "",
+                    title: "",
+                    thumbnail: "",
+                    short_descriptionobbie: "",
+                    game_url: "",
+                    genre: "",
+                    platform: "",
+                    publisher: "",
+                    develover: "",
+                    release_date: "",
+                    freetogame_profile_url: ""
+                }
+
+                const oModel = new JSONModel(oParam);
+                return oModel;
+            },
+
+            pictureModel: function () {
+                const oParam = {
+                    author: "",
+                    download_url: "",
+                    height: "",
+                    id: "",
+                    url: "",
+                    width: ""
+                }
+
+                const oModel = new JSONModel(oParam);
+                return oModel;
+
+            }
+        };
+    });
