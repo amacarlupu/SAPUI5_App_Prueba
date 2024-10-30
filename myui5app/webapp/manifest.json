@@ -86,9 +86,21 @@
             "routes": [
                 {
                     "name": "RouteMainView",
-                    "pattern": ":?query:",
+                    "pattern": "",
                     "target": [
                         "TargetMainView"
+                    ]
+                },
+                {
+                    "name": "Comunidad",
+                    "pattern": "",
+                    "target": "Comunidad"
+                },
+                {
+                    "name": "Acerca",
+                    "pattern": "",
+                    "target": [
+                        "Acerca"
                     ]
                 }
             ],
@@ -98,7 +110,23 @@
                     "transition": "slide",
                     "clearControlAggregation": false,
                     "viewId": "MainView",
-                    "viewName": "MainView"
+                    "viewName": "MainView",
+                    "level": "0"
+                },
+                "Comunidad": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Comunidad",
+                    "viewName": "Comunidad",
+                    "level": "1"
+                },
+                "Acerca": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Acerca",
+                    "viewName": "Acerca"
                 }
             }
         },

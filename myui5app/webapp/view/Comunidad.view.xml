@@ -1,0 +1,22 @@
+<mvc:View
+    controllerName="myui5app.controller.Comunidad"
+     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    xmlns:tnt="sap.tnt"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <Page
+        id="page1"
+        class=""
+        title="{i18n>comunidad}"
+    >
+        <content>
+            <Button
+                text="Home"
+                type="Transparent"
+                press="onHomeComunidad"
+            />
+        </content>
+    </Page>
+</mvc:View>

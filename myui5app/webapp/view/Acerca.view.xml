@@ -1,0 +1,21 @@
+<mvc:View
+    controllerName="myui5app.controller.Acerca"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <Page
+        id="page"
+        class=""
+        title="{i18n>acerca}"
+    >
+        <content>
+            <Button
+                text="Home"
+                type="Transparent"
+                press="onHomeComunidad"
+            />
+        </content>
+    </Page>
+</mvc:View>

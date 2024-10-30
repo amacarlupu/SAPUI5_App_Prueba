@@ -24,19 +24,28 @@
                 >
                     <f:content>
                         <core:Title text="Information" />
-                        <Label text="Correo Electrónico" />
+                        <Label text="{i18n>correo}" />
                         <Input
+                            required="true"
                             value="{
-							path : 'email',
+							path : 'datosUsuario>/correo',
 							type : 'sap.ui.model.type.String',
 							constraints: {
 								search: '^\\w+[\\w-+\\.]*\\@[a-zA-Z]+.[a-zA-Z]+'
 								}
 							}"
                         />
-                        <Label text="Direccion" />
-                        <Input value="{street/name}" />
-                        <Input value="{street/number}">
+                        <Label text="{i18n>direccion}" />
+                        <Input
+                            value="{
+                            path: 'datosUsuario>/direccion'
+                        }"
+                        />
+                        <Input
+                            value="{
+                            path: 'datosUsuario>/numero_direccion'
+                        }"
+                        >
                             <layoutData>
                                 <f:ColumnElementData
                                     cellsSmall="2"
@@ -44,30 +53,39 @@
                                 />
                             </layoutData>
                         </Input>
-                     
-                        <Label text="País" />
+
+                        <Label text="{i18n>pais}" />
                         <Select
-                            id="country"
-                            selectedKey="{country}"
+                            id="pais"
+                            selectedKey="{
+                                path:'datosUsuario>/selectKeyPais'
+                            }"
+                            change="onChangeSelect"
                         >
                             <items>
                                 <core:Item
-                                    text="England"
-                                    key="England"
+                                    text="--Seleccione--"
+                                    key="0"
                                 />
                                 <core:Item
-                                    text="Germany"
-                                    key="Germany"
+                                    text="Perú"
+                                    key="1"
                                 />
                                 <core:Item
-                                    text="USA"
-                                    key="USA"
+                                    text="Colombia"
+                                    key="2"
+                                />
+                                <core:Item
+                                    text="Chile"
+                                    key="3"
                                 />
                             </items>
                         </Select>
                         <core:Title text="Contact" />
                         <Label text="Volver a ingresar el correo electrónico" />
                         <Input
+                            id="email_validation"
+                            required="true"
                             value="{
 							path : 'email',
 							type : 'sap.ui.model.type.String',
@@ -76,9 +94,12 @@
 								}
 							}"
                         />
-                        <Label text="Numero de celular" />
-                        <Input value="{phone/number}" />
-                        <Input value="{phone/time}">
+                        <Label text="{i18n>celular}" />
+                        <Input
+                            value="{
+                            path: 'datosUsuario>/prefijo'
+                        }"
+                        >
                             <layoutData>
                                 <f:ColumnElementData
                                     cellsSmall="2"
@@ -86,8 +107,17 @@
                                 />
                             </layoutData>
                         </Input>
-                        <Label text="Personal website" />
-                        <Input value="{website}" />
+                        <Input
+                            value="{
+                            path: 'datosUsuario>/celular'
+                        }"
+                        />
+                        <Label text="{i18n>website}" />
+                        <Input
+                            value="{
+                            path: 'datosUsuario>/website'
+                        }"
+                        />
                     </f:content>
                 </f:SimpleForm>
             </VBox>
@@ -128,24 +158,15 @@
         <footer>
             <Toolbar>
                 <content>
-                    <Button
-                        id="messagePopoverBtn"
-                        visible="{= !!${message>/}.length }"
-                        icon="{ path: '/', formatter: '.buttonIconFormatter' }"
-                        type="{ path: '/', formatter: '.buttonTypeFormatter' }"
-                        text="{ path: '/', formatter: '.highestSeverityMessages' }"
-                        press=".handleMessagePopoverPress"
-                        ariaHasPopup="Dialog"
-                    />
                     <ToolbarSpacer />
                     <Button
                         type="Accept"
-                        text="Save"
-                        press="._generateInvalidUserInput"
+                        text="Registrarse"
+                        press="onBtnRegistrarse"
                     />
                     <Button
                         id="Reject"
-                        text="Reject"
+                        text="Cerrar"
                         type="Reject"
                         press="closeDialog"
                         ariaHasPopup="Dialog"

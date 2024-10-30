@@ -20,19 +20,15 @@ sap.ui.define([
                 return oModel;
             },
 
-            gamesModel: function () {
+            datosUsuario: function () {
                 const oParam = {
-                    id: "",
-                    title: "",
-                    thumbnail: "",
-                    short_descriptionobbie: "",
-                    game_url: "",
-                    genre: "",
-                    platform: "",
-                    publisher: "",
-                    develover: "",
-                    release_date: "",
-                    freetogame_profile_url: ""
+                    correo: "",
+                    direccion: "",
+                    numero_direccion: "",
+                    celular: "",
+                    prefijo:"",
+                    website: "",
+                    selectKeyPais: "0",
                 }
 
                 const oModel = new JSONModel(oParam);

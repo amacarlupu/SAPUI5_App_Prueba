@@ -1,6 +1,7 @@
 <mvc:View
     controllerName="myui5app.controller.MainView"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
     xmlns:tnt="sap.tnt"
     displayBlock="true"
     xmlns="sap.m"
@@ -22,18 +23,40 @@
                     src="assets/img/logo_steam.svg"
                     class="image-logo"
                 />
-
-                <Title
+                <Button
+                    text="{i18n>tienda}"
+                    type="Emphasized"
+                >
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" />
+                    </layoutData>
+                </Button>
+                <!-- <Title
                     text="{i18n>tienda}"
                     level="H1"
                     class="header-text"
+                /> -->
+                <Button
+                    text="{i18n>comunidad}"
+                    type="Transparent"
+                    press="onRouteComunidad"
                 />
-                <Title
+                <!-- <Title
                     text="{i18n>comunidad}"
                     level="H1"
                     class="header-text"
+                /> -->
+                <Button
+                    text="{i18n>acerca}"
+                    type="Transparent"
+                    press="onRouteAcerca"
                 />
-                <Title
+                <Button
+                    text="{i18n>soporte}"
+                    type="Transparent"
+                />
+
+                <!-- <Title
                     text="{i18n>acerca}"
                     level="H1"
                     class="header-text"
@@ -42,7 +65,7 @@
                     text="{i18n>soporte}"
                     level="H1"
                     class="header-text"
-                />
+                /> -->
                 <ToolbarSpacer />
             </Toolbar>
         </customHeader>
@@ -107,7 +130,7 @@
                 </Avatar>
             </tnt:ToolHeader>
 
-            <HBox class="nav-front">
+            <!-- <HBox class="nav-front">
                 <VBox class="sapUiSmallMargin">
                     <Button
                         id="button"
@@ -116,19 +139,53 @@
                         ariaHasPopup="Menu"
                     />
                 </VBox>
-            </HBox>
+            </HBox> -->
 
             <HBox>
-                <List items="{
+                <List
+                    items="{
                         path: 'pictureModel>/'
-                    }">
+                    }"
+                >
                     <items>
-                        <ObjectListItem
-                            title="{pictureModel>author}"
-                        />
+                        <ObjectListItem title="{pictureModel>download_url}" />
                     </items>
                 </List>
-                <Text text="Holassss" />
+            </HBox>
+            <!-- items="{pictureModel>/}" class="content_carousel" -->
+            <HBox>
+                <!-- <Text text="{pictureModel>author}" /> -->
+
+                <Carousel
+                    ariaLabelledBy="carouselTitle"
+                    class="sapUiContentPadding"
+                    loop="true"
+                    pages="{pictureModel>/}"
+                >
+                    <Image
+                        class="carousel-image"
+                        src="{pictureModel>download_url}"
+                        alt="{pictureModel>author}"
+                    />
+
+                    <Image
+                        class="carousel-image"
+                        src="{pictureModel>download_url}"
+                        alt="{pictureModel>author}"
+                    />
+                    <!-- <Image
+                    src="{img>/products/pic2}"
+                    alt="Example picture of USB flash drive"
+                />
+                <Image
+                    src="{img>/products/pic3}"
+                    alt="Example picture of spotlight"
+                />
+                <Image
+                    src="{img>/products/screw}"
+                    alt="Example picture of screw"
+                /> -->
+                </Carousel>
             </HBox>
         </content>
     </Page>
